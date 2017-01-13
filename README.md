@@ -1,6 +1,7 @@
 ## Angular Intro, Controllers, and Directives
 
 - Describe the benefits of using a front end framework
+- Differentiate between other frontend frameworks
 - Differentiate between directives, modules, and controllers in Angular
 - Render and bind controller data in the view.
 - Explain what an Angular directive is and how we use them
@@ -24,7 +25,7 @@ AngularJS provides the following benefits when used to develop web apps:
 - Makes us more productive when developing web apps because it provides features, such as data binding, that requires less code from the developer
 - Was designed with testing in mind
 
-#### The Components of AngularJS
+## The Components of AngularJS
 
 ![angular_components](https://cloud.githubusercontent.com/assets/25366/8970275/a1ab2ee2-35fd-11e5-8b23-65f4159ff7d6.jpg)
 
@@ -78,6 +79,16 @@ Single Page Applications (SPA) are all the rage today. A misconception is that a
 ![spa_architecture](https://cloud.githubusercontent.com/assets/25366/8970635/896c4cce-35ff-11e5-96b2-ef7e62784764.png)
 
 Client-side routing requires something known as a _router_.  A router in AngularJS, at a minimum, is used to define our routes, specify the template for that route, and specify which controller to attach to that view. You'll get to see routers in action in a later lesson.
+
+## Other Frontend Frameworks
+
+Angular is not the only Frontend JavaScriptFramework.
+
+Ember.JS, BackBone.JS, Meteor.JS, and React.JS are just to name a few.
+
+One reason for Angulars use over these other frameworks is size. With full MVC capabilities, Angular is compact. Meaning it is going to load faster in the Browser than other frameworks.
+
+We will be learning React.JS as well, but one thing to note about React is that it is only the 'VIEW' portion of the MVC pattern, so it is not a full frontend framework. React does not do AJAX calls, Routing, Filters, Services, etc. Think of it as just the Directive part of Angular.
 
 <details>
 <summary>**Q**: What is a Front End Framework?</summary>
