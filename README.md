@@ -84,7 +84,7 @@ Client-side routing requires something known as a _router_.  A router in Angular
 
 ## Other Frontend Frameworks
 
-Angular is not the only Frontend JavaScriptFramework.
+Angular is not the only Frontend JavaScript Framework.
 
 Ember.JS, BackBone.JS, Meteor.JS, and React.JS are just to name a few.
 
@@ -441,12 +441,12 @@ this.addTodo = function(){
 
 Here we have access to the todo the user entered via a property on a controller of the same name that we used in the view (`this.newTodo`), we use that data to create a new todo, then add it to our collection.
 
-## You Do: Add a New Grumble
+## You Do: Add a New Todo
 
-- Create some UI for the user to enter in information about a new Grumble (i.e. inputs for `title`, `author`, `content`, and `photo_url`, as well as a button to submit)
+- Create some UI for the user to enter in information about a new Todo
 - Wire up your form's button to a method defined in controller
 - Bind each input to a property attached on the view model
-- When the user clicks submit, inside your method in the controller - use the user data to create a new `grumble` and add it to your collection of `grumbles`.
+- When the user clicks submit, inside your method in the controller - use the user data to create a new `todo` and add it to your collection of `todos`.
 
 ## Bonus: Conditional Rendering
 
@@ -490,9 +490,9 @@ In `index.html`:
 ```
 > **Note**: the `|` operator starts a filter - which needs a key value pair of how to filter/sort. Note, here we are passing an object as the value specifying that we want to filter by the `completed` property of a `todo` as `false`
 
-### You Do: Filters in Grumblr
+### You Do: Filters in Todos
 
-Implement a search functionality for your Grumblr application so that a user can enter in some input, and your collection of `grumbles` is filtered based on user input
+Implement a search functionality for your Grumblr application so that a user can enter in some input, and your collection of `todos` is filtered based on user input
 
 ## Conclusion (5 mins)
 - How do we define a new module when starting an application?
