@@ -127,7 +127,7 @@ Let's hop into our terminal and create those files…
 ```bash
 $ mkdir angularTodos
 $ cd angularTodos
-$ touch index.html app.js
+$ touch index.html todos.module.js
 ```
 
 Great, now let's fill our `index.html` with some boilerplate and the necessary script tags.
@@ -141,7 +141,7 @@ Great, now let's fill our `index.html` with some boilerplate and the necessary s
  <title>Angular Todos</title>
 
  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
- <script src="app.js"></script>
+ <script src="todos.module.js"></script>
 </head>
 <body>
 
@@ -151,29 +151,6 @@ Great, now let's fill our `index.html` with some boilerplate and the necessary s
 
 > **Note**: make sure to link to the Angular CDN **before** your custom JS file
 
-### The Data
-
-To start, let's represent some important goals from WDI as todos in our application.
-
-```js
-// app.js
-let todoData = [
-  { name: 'Build an app with Rails', completed: true },
-  { name: 'Project 2', completed: true },
-  { name: 'Build an app with Angular', completed: false },
-  { name: 'Project 3', completed: false },
-  { name: 'Build an app with Express', completed: false },
-  { name: 'Build an app with Mongo', completed: false },
-  { name: 'Build an app with React', completed: false },
-  { name: 'Project 4', completed: false },
-  { name: 'Become a Rockstar', completed: true }
-]
-```
-
-> For now, we'll just keep it simple as we'll store our data as an array of hard-coded JS objects - with each `todo` having a `name` and `completed` property.
-
-Great, now that we have some data to play with, let's begin to work on rendering it meaningfully in the browser.
-
 ### Bootstrapping Angular
 
 Building an Angular app is a lot like playing with Legos, in that we will mostly just be putting together a bunch of special pieces to construct a complex structure.
@@ -181,8 +158,11 @@ Building an Angular app is a lot like playing with Legos, in that we will mostly
 Since we already have loaded Angular into our app, we now have access to the global `angular` object, which we will use to define our app's [module](https://docs.angularjs.org/api/ng/function/angular.module),.
 
 ```js
-// app.js
-angular.module("todoApp", [])
+// todos.module.js
+(function(){
+  angular.module("todoApp", []);
+})();
+
 ```
 
 > **Note**: here we are defining a new [module](https://docs.angularjs.org/api/ng/function/angular.module), `angular.module`, with **two** arguments. The first argument is the **name** of the Angular module. The second argument is an **array of dependencies**, or other modules on which the current module will depend.
@@ -216,20 +196,13 @@ In Angular, any Javascript that we want to execute and print to the screen can b
 
 For example, adding `{{5 + 5}} ` to the `body` of our `index.html` file, would print `10` to the screen.
 
-## You Do: Setup Grumblr Application (5 mins)
-
-For the rest of this morning, you will be working on building Grumblr, a one-model application that will allow users to post their `grumbles`.
+## You Do: Setup Toto Application (5 mins)
 
 To start:
-- Create a directory called `grumblr`
+- Create a directory called `angularTodos`
 - Inside that directory, create two files - a `html` file, and a `js` file
 - Add some boilerplate `html` and make sure to link to your `js` file and the **Angular CDN**
-- Create and store to a variable, an array of hard-coded data that contains at least 5 objects with the following properties:
-  - `title`
-  - `author`
-  - `content`
-  - `photo_url`
-- Define you application's initial module and use a directive to bootstrap your Angular application
+- Define your application's initial module and use a directive to bootstrap your Angular application
 - Use Angular Expressions to get the product of `5 x 5` to display in the browser
 
 ## [Angular Controllers](https://docs.angularjs.org/guide/controller) (10/80)
@@ -238,22 +211,68 @@ Great, so we now have a way to write javascript in our `html`, now we just have 
 
 In order to pass data into the view, in Angular we need a **controller**. Controllers are the go-between for views (our HTML) and our data.
 
-Let's add a new controller definition to `app.js`:
+Let's add a new controller definition to `todos-controller.js`:
+
+```bash
+$ mkdir controllers
+$ touch controllers/todos.controller.js
+```
 
 ```js
-// app.js
-angular
-  .module("todoApp", [])
-  .controller("todosCtrl", [ todoController ])
+// todos.controller.js
+(function(){
+  angular
+  .module("todoApp")
+  .controller("todosCtrl", todoController)
 
-function todoController () {
-  this.todos = todoData
-}
+  function todoController () {
+    
+  }
+})();
+```
+
+Next we need to include our controller file in our `index.html` head below to intialize module:
+
+```html
+<!-- index.html -->
+<head>
+ <meta charset="UTF-8">
+ <title>Angular Todos</title>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+ <script src="todos.module.js"></script>
+ <script src="/controllers/todos.controller.js"></script>
+</head>
 ```
 
 > Here we've instantiated a new controller for our app. This is where all the logic and CRUD functionality will be contained.
 
-> **Note** In our controller definition, the first argument is the **name** of the controller. The second argument is an **array of dependencies** for the controller, and **must include a function** that encloses all the functionality of the controller.
+> **Note** In our controller definition, the first argument is the **name** of the controller. The second argument is the **function** for the controller that encloses all the functionality of the controller. Below it, we then define that function as hoisted function.
+
+### The Data
+
+Let's represent some important goals from WDI as todos in our application.
+
+```js
+// todos-controller.js
+function todoController () {
+  this.todos = [
+    { name: 'Build an app with Rails', completed: true },
+    { name: 'Project 2', completed: true },
+    { name: 'Build an app with Angular', completed: false },
+    { name: 'Project 3', completed: false },
+    { name: 'Build an app with Express', completed: false },
+    { name: 'Build an app with Mongo', completed: false },
+    { name: 'Build an app with React', completed: false },
+    { name: 'Project 4', completed: false },
+    { name: 'Become a Rockstar', completed: true }
+  ];
+}
+```
+
+> For now, we'll just keep it simple as we'll store our data as an array of hard-coded JS objects - with each `todo` having a `name` and `completed` property.
+
+Great, now that we have some data to play with, let's begin to work on rendering it meaningfully in the browser.
 
  As in Rails, the controller is an interface between our data and our view. Just like how in Rails, to make data show up in a view, we'd make it an instance variable, as in `@variable = "Some data"`. To do the same in Angular, we attach it to `this`, as in `this.variable = "Some data"`. Here we are attaching all of our hard-coded todo objects as a property on our controller called `todos`
 
@@ -309,12 +328,12 @@ In `index.html`:
 
 Now, when we refresh in the browser we see each of our todos with their respective data and markup displaying.
 
-## `ng-repeat` - You Do - Grumblr (10 mins)
+## `ng-repeat` - You Do - Todos (10 mins)
 
 - Define a new controller attached to your app's module
-- Attach a property to your controller called `grumbles` which is equal to all of your hard-coded data
+- Attach a property to your controller called `todos` which is equal to all of your hard-coded data
 - In the view, initialize an instance of your controller as the view model
-- Use a directive to display all of the information for each `grumble` (title, name, content, photo url)
+- Use a directive to display all of the information for each `todo`
 
 ---
 ## Break (10 mins)
