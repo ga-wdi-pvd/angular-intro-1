@@ -461,3 +461,8 @@ In `index.html`:
 ### You Do: Filters in Grumblr
 
 Implement a search functionality for your Grumblr application so that a user can enter in some input, and your collection of `grumbles` is filtered based on user input
+
+## Conclusion (5 mins)
+- How do we define a new module when starting an application?
+- When you create an example controller from scratch, what type of JS function is this?
+- How do we render data in the view? What does the templating look like in Angular?
