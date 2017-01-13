@@ -33,6 +33,8 @@ AngularJS provides the following benefits when used to develop web apps:
 
 Modules are containers for related code.  The concept of *modules* is prevalent throughout programming, and here, we can consider it essentially a container for our app.
 
+This is essentially Object Oriented Programming. The functionality of the MVC pattern has been divided out in a module with the following:
+
 #### Config & Routes
 
 Each AngularJS module has a *config* method that allows us to provide code that runs when a module is loaded.  The *config* method is used most commonly to setup routing.
@@ -42,7 +44,7 @@ Each AngularJS module has a *config* method that allows us to provide code that 
 Controllers in AngularJS serve two primary purposes:
 
 - Initialize the data used for the view they are attached to
-- Contain the primary code to respond to user events, such as when a user clicks on a button
+- Contain the primary code to respond to user events, such as when a user clicks on a button or AJAX calls
 
 A controller is a JS constructor function that is instantiated by the _ng-controller_ directive.
 
